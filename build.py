@@ -10,11 +10,11 @@ sections = {
     7:'day-ahead', 8:'real-time', 9:'spread', 10:'scenarios', 11:'settlement',
     12:'storage-model', 13:'market-replay', 14:'bidding', 15:'operations',
     16:'backtest', 17:'implementation', 18:'policy-sources', 19:'literature',
-    20:'code-and-data',
+    20:'code-and-data', 21:'gradient-engine',
 }
 groups = [
     (2, 4, '研究与市场'), (5, 10, '预测算法'), (11, 15, '储能报价'),
-    (16, 17, '验证与实施'), (18, 20, '来源与复现'),
+    (16, 17, '验证与实施'), (18, 20, '来源与复现'), (21, 21, '公众号补充'),
 ]
 
 def rich(value):
@@ -127,5 +127,8 @@ for n, label, title, body in chapters:
                    f'<h2 id="{slug}-title">{esc(title)}</h2>{render_body(body)}'
                    f'{calculator if n == 11 else ""}</section>')
 template = (ROOT/'template.html').read_text(encoding='utf-8')
-html = template.replace('<!-- NAV -->',make_nav(chapters)).replace('<!-- REPORT -->','\n'.join(article))
+source_count = sum(line.startswith('REF ') for _, _, _, body in chapters for line in body)
+html = (template.replace('{{SOURCE_COUNT}}', str(source_count))
+        .replace('<!-- NAV -->', make_nav(chapters))
+        .replace('<!-- REPORT -->', '\n'.join(article)))
 (ROOT/'docs'/'index.html').write_text(html,encoding='utf-8')
