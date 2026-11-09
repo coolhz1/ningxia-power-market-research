@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="宁夏电力现货市场的日前电价、实时电价、价差预测与独立储能报价算法。包含 V2.0 规则、结算算例与 40 条来源。">
+  <meta name="theme-color" content="#10251f">
+  <title>宁夏电力现货预测与独立储能报价</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#research">跳到正文</a>
+<header class="topbar" id="top">
+  <div class="frame topbar-inner">
+    <a class="brand" href="#top"><img src="assets/mark.svg" alt="" width="31" height="31"><span>宁夏电力现货研究</span></a>
+    <nav class="toplinks" aria-label="主导航">
+      <a href="#research">研究目录</a>
+      <a href="#settlement">结算算例</a>
+      <a href="#policy-sources">来源</a>
+      <a class="pdf-link" href="assets/ningxia-power-market-research.pdf">下载 PDF <span aria-hidden="true">↓</span></a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="frame hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> 技术调研与算法设计 <span class="micro-rule"></span> 2026.11.09</p>
+        <h1 id="hero-title">宁夏电力现货预测<br class="hero-break">与独立储能报价</h1>
+        <p class="hero-description">按宁夏规则构建日前与实时电价预测，估计价差，再将联合价格场景转成可申报、可回测的储能量价曲线。</p>
+        <div class="hero-actions">
+          <a class="action primary" href="#research">阅读研究 <span aria-hidden="true">↓</span></a>
+          <a class="action secondary" href="#bidding">查看报价算法 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <div class="figure-heading"><span>日前与实时电价轨迹</span><span class="figure-chip">合成示意</span></div>
+        <svg class="trace-chart" viewBox="0 0 520 258" role="img" aria-labelledby="trace-title trace-desc">
+          <title id="trace-title">一日内的日前与实时价格示意</title>
+          <desc id="trace-desc">日前和实时曲线在午间低谷与傍晚高峰同向变化，同时段存在价差。示意曲线不代表宁夏实际价格。</desc>
+          <defs>
+            <linearGradient id="trace-fill" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
+              <stop stop-color="#c9fa6b" stop-opacity=".22"/><stop offset="1" stop-color="#c9fa6b" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path class="gridlines" d="M46 42H492 M46 93H492 M46 144H492 M46 195H492 M46 42V195 M157 42V195 M269 42V195 M380 42V195 M492 42V195"/>
+          <rect x="222" y="42" width="90" height="153" fill="#81c9ba" opacity=".085"/>
+          <rect x="353" y="42" width="69" height="153" fill="#c9fa6b" opacity=".085"/>
+          <path d="M46 125 C83 130 96 134 120 126 S166 105 186 128 S233 171 267 173 S305 150 327 121 S353 75 371 76 S401 98 425 114 S469 130 492 120 V195 H46 Z" fill="url(#trace-fill)"/>
+          <path class="trace da" d="M46 125 C83 130 96 134 120 126 S166 105 186 128 S233 171 267 173 S305 150 327 121 S353 75 371 76 S401 98 425 114 S469 130 492 120"/>
+          <path class="trace rt" d="M46 136 C66 129 81 140 100 134 S125 120 139 124 S162 106 177 118 S208 143 221 157 S239 184 259 176 S287 186 305 153 S331 109 343 115 S359 59 371 53 S383 90 398 80 S419 117 443 121 S472 128 492 126"/>
+          <path class="gap-line" d="M371 55V76"/>
+          <circle cx="371" cy="76" r="4.5" fill="#c9fa6b"/><circle cx="371" cy="53" r="4.5" fill="#80d6c4"/>
+          <g class="chart-text">
+            <text x="44" y="24">电价</text><text x="386" y="62">价差</text>
+            <text x="46" y="226" text-anchor="middle">00:00</text>
+            <text x="157" y="226" text-anchor="middle">06:00</text>
+            <text x="269" y="226" text-anchor="middle">12:00</text>
+            <text x="380" y="226" text-anchor="middle">18:00</text>
+            <text x="492" y="226" text-anchor="middle">24:00</text>
+          </g>
+        </svg>
+        <figcaption><span><i class="da-key"></i>日前</span><span><i class="rt-key"></i>实时</span><span class="fig-note">仅用于解释价差</span></figcaption>
+      </figure>
+    </div>
+    <div class="frame hero-stats">
+      <div><strong>96</strong><span>个 15 分钟时段 / 日</span></div>
+      <div><strong>2</strong><span>日量价曲线申报</span></div>
+      <div><strong>40</strong><span>条可追溯来源</span></div>
+      <div><strong>V2.0</strong><span>宁夏电能量规则基线</span></div>
+    </div>
+  </section>
+
+  <div class="frame">
+    <section class="overview" id="research" aria-labelledby="overview-title">
+      <div class="section-intro">
+        <div><p class="section-kicker">研究目录</p><h2 id="overview-title">从电价预测到报价</h2></div>
+        <p>同一时点生成四条出清价格曲线，保留各自的结算口径，并沿用封存报价做实时回放。</p>
+      </div>
+      <div class="topic-grid">
+        <a class="topic" href="#day-ahead"><span class="topic-id">01 / 日前</span><strong>日前电价预测</strong><span>预测 D 与 D+1 的节点价和统一结算点价。</span><b aria-hidden="true">↗</b></a>
+        <a class="topic" href="#real-time"><span class="topic-id">02 / 实时</span><strong>实时电价预测</strong><span>用日前价作锚，估计 15–120 分钟的实时偏差。</span><b aria-hidden="true">↗</b></a>
+        <a class="topic" href="#spread"><span class="topic-id">03 / 价差</span><strong>两类价差预测</strong><span>分开估计日前与实时价差、跨时段可兑现价差。</span><b aria-hidden="true">↗</b></a>
+        <a class="topic" href="#bidding"><span class="topic-id">04 / 报价</span><strong>储能报价生成</strong><span>用 SOC 约束和场景结算筛选合规报价曲线。</span><b aria-hidden="true">↗</b></a>
+      </div>
+      <p class="scope"><strong>研究口径</strong>　适用于宁夏电网侧独立电化学储能。规则来自公开文件，算例使用合成数据。精度、成交与收益需要授权的宁夏站点数据验证。</p>
+    </section>
+
+    <div class="reading-layout">
+      <aside class="reader-nav">
+        <details class="toc" open>
+          <summary>完整章节 <span aria-hidden="true">⌄</span></summary>
+          <nav aria-label="章节导航">
+          <!-- NAV -->
+          </nav>
+        </details>
+      </aside>
+      <article class="report" aria-label="完整调研报告">
+        <div class="search" hidden>
+          <label for="report-search">搜索正文与来源</label>
+          <input id="report-search" type="search" placeholder="例如：出清价、SOC、LEAR" autocomplete="off">
+          <div id="search-results" aria-live="polite"></div>
+        </div>
+        <!-- REPORT -->
+      </article>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="frame footer-inner">
+    <div><strong>宁夏电力现货研究</strong><p>资料检索截至 2026 年 11 月 9 日</p></div>
+    <nav aria-label="页脚导航"><a href="#top">返回顶部 ↑</a><a href="assets/ningxia-power-market-research.pdf">下载报告 ↓</a><a href="https://github.com/coolhz1/ningxia-power-market-research">GitHub 仓库 ↗</a></nav>
+  </div>
+</footer>
+</body>
+</html>
