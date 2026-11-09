@@ -51,16 +51,11 @@ button { cursor: pointer; }
 .primary:hover { background: #e0ffa6; }
 .secondary { color: #eff8ee; border-color: #6b9784; }
 .secondary:hover { background: #ffffff12; }
-.hero-figure { min-width: 0; margin: 0; padding: 19px 19px 15px; background: #112920cd; border: 1px solid #587968; border-radius: 16px; box-shadow: 0 20px 68px #081a154d; }
+.hero-figure { min-width: 0; margin: 0; padding: 19px 19px 15px; background: #142e24; border: 1px solid #587968; border-radius: 16px; box-shadow: 0 20px 68px #081a154d; }
 .figure-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-inline: 5px; font-weight: 690; font-size: 15px; }
 .figure-chip { border: 1px solid #5e8676; border-radius: 99px; padding: 2px 8px; color: #b9d9c9; font-size: 11px; font-weight: 550; white-space: nowrap; }
-.trace-chart { display: block; width: 100%; }
-.gridlines { stroke: #759d8b; stroke-opacity: .33; stroke-width: 1; }
-.trace { fill: none; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
-.trace.da { stroke: var(--lime); }
-.trace.rt { stroke: #80d6c4; stroke-dasharray: 6 4; }
-.gap-line { stroke: #c5e3d4; stroke-width: 1; }
-.chart-text { fill: #bfd5ca; font-size: 12px; font-family: var(--sans); }
+.chart-link { display: block; }
+.trace-chart { display: block; width: 100%; height: auto; }
 .hero-figure figcaption { display: flex; align-items: center; gap: 13px; color: #d8e9dc; font-size: 12px; padding: 9px 5px 0; border-top: 1px solid #4a6b5d; }
 .hero-figure figcaption span { display: flex; align-items: center; gap: 5px; }
 .hero-figure i { display: inline-block; width: 15px; border-top: 2px solid; }

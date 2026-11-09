@@ -4,17 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="宁夏电力现货市场的日前电价、实时电价、价差预测与独立储能报价算法。包含 V2.0 规则、结算算例与 40 条来源。">
+  <meta property="og:title" content="宁夏电力现货预测与独立储能报价">
+  <meta property="og:image" content="https://coolhz1.github.io/ningxia-power-market-research/assets/price-trajectory.png">
+  <meta property="og:image:alt" content="日前与实时电价轨迹及价差合成示意图">
   <meta name="theme-color" content="#10251f">
   <title>宁夏电力现货预测与独立储能报价</title>
-  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="assets/market-mark.png" type="image/png">
+  <link rel="stylesheet" href="assets/site.css?v=2">
   <script src="assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#research">跳到正文</a>
 <header class="topbar" id="top">
   <div class="frame topbar-inner">
-    <a class="brand" href="#top"><img src="assets/mark.svg" alt="" width="31" height="31"><span>宁夏电力现货研究</span></a>
+    <a class="brand" href="#top"><img src="assets/market-mark.png" alt="" width="31" height="31"><span>宁夏电力现货研究</span></a>
     <nav class="toplinks" aria-label="主导航">
       <a href="#research">研究目录</a>
       <a href="#settlement">结算算例</a>
@@ -37,31 +40,9 @@
       </div>
       <figure class="hero-figure">
         <div class="figure-heading"><span>日前与实时电价轨迹</span><span class="figure-chip">合成示意</span></div>
-        <svg class="trace-chart" viewBox="0 0 520 258" role="img" aria-labelledby="trace-title trace-desc">
-          <title id="trace-title">一日内的日前与实时价格示意</title>
-          <desc id="trace-desc">日前和实时曲线在午间低谷与傍晚高峰同向变化，同时段存在价差。示意曲线不代表宁夏实际价格。</desc>
-          <defs>
-            <linearGradient id="trace-fill" x1="0" x2="0" y1="0" y2="1" gradientUnits="objectBoundingBox">
-              <stop stop-color="#c9fa6b" stop-opacity=".22"/><stop offset="1" stop-color="#c9fa6b" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <path class="gridlines" d="M46 42H492 M46 93H492 M46 144H492 M46 195H492 M46 42V195 M157 42V195 M269 42V195 M380 42V195 M492 42V195"/>
-          <rect x="222" y="42" width="90" height="153" fill="#81c9ba" opacity=".085"/>
-          <rect x="353" y="42" width="69" height="153" fill="#c9fa6b" opacity=".085"/>
-          <path d="M46 125 C83 130 96 134 120 126 S166 105 186 128 S233 171 267 173 S305 150 327 121 S353 75 371 76 S401 98 425 114 S469 130 492 120 V195 H46 Z" fill="url(#trace-fill)"/>
-          <path class="trace da" d="M46 125 C83 130 96 134 120 126 S166 105 186 128 S233 171 267 173 S305 150 327 121 S353 75 371 76 S401 98 425 114 S469 130 492 120"/>
-          <path class="trace rt" d="M46 136 C66 129 81 140 100 134 S125 120 139 124 S162 106 177 118 S208 143 221 157 S239 184 259 176 S287 186 305 153 S331 109 343 115 S359 59 371 53 S383 90 398 80 S419 117 443 121 S472 128 492 126"/>
-          <path class="gap-line" d="M371 55V76"/>
-          <circle cx="371" cy="76" r="4.5" fill="#c9fa6b"/><circle cx="371" cy="53" r="4.5" fill="#80d6c4"/>
-          <g class="chart-text">
-            <text x="44" y="24">电价</text><text x="386" y="62">价差</text>
-            <text x="46" y="226" text-anchor="middle">00:00</text>
-            <text x="157" y="226" text-anchor="middle">06:00</text>
-            <text x="269" y="226" text-anchor="middle">12:00</text>
-            <text x="380" y="226" text-anchor="middle">18:00</text>
-            <text x="492" y="226" text-anchor="middle">24:00</text>
-          </g>
-        </svg>
+        <a class="chart-link" href="assets/price-trajectory.png">
+          <img class="trace-chart" src="assets/price-trajectory.png" width="1040" height="516" alt="合成示意图。日前实线与实时虚线均呈午间低谷、傍晚高峰，同一时段两线的高度差表示价差。">
+        </a>
         <figcaption><span><i class="da-key"></i>日前</span><span><i class="rt-key"></i>实时</span><span class="fig-note">仅用于解释价差</span></figcaption>
       </figure>
     </div>
