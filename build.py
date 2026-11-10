@@ -55,9 +55,14 @@ def table(lines):
 
 def source(value):
     ident, label, url, note = value.split(' | ', 3)
+    title = esc(label)
+    if url:
+        title = (f'<a href="{esc(url, quote=True)}" target="_blank" rel="noopener noreferrer">'
+                 f'{title} <span aria-hidden="true">↗</span></a>')
+    else:
+        title = f'<strong>{title}</strong>'
     return (f'<li class="source" id="ref-{ident}"><span class="source-id">{ident}</span>'
-            f'<div><a href="{esc(url, quote=True)}" target="_blank" rel="noopener noreferrer">{esc(label)} <span aria-hidden="true">↗</span></a>'
-            f'<p>{esc(note)}</p></div></li>')
+            f'<div>{title}<p>{esc(note)}</p></div></li>')
 
 def parse():
     blocks = re.split(r'\n=== ', (ROOT/'report.txt').read_text(encoding='utf-8'))[1:]
